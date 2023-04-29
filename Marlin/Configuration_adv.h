@@ -1546,14 +1546,14 @@
 #if HAS_DISPLAY && EITHER(SDSUPPORT, SET_PROGRESS_MANUALLY)
 #define SHOW_PROGRESS_PERCENT // Show print progress percentage (doesn't affect progress bar)
 #define SHOW_ELAPSED_TIME     // Display elapsed printing time (prefix 'E')
-// #define SHOW_REMAINING_TIME           // Display estimated time to completion (prefix 'R')
+#define SHOW_REMAINING_TIME           // Display estimated time to completion (prefix 'R')
 #if ENABLED(SET_INTERACTION_TIME)
 #define SHOW_INTERACTION_TIME // Display time until next user interaction ('C' = filament change)
 #endif
 // #define PRINT_PROGRESS_SHOW_DECIMALS  // Show/report progress with decimal digits, not all UIs support this
 
 #if EITHER(HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
-// #define LCD_PROGRESS_BAR            // Show a progress bar on HD44780 LCDs for SD printing
+#define LCD_PROGRESS_BAR            // Show a progress bar on HD44780 LCDs for SD printing
 #if ENABLED(LCD_PROGRESS_BAR)
 #define PROGRESS_BAR_BAR_TIME 2000 // (ms) Amount of time to show the bar
 #define PROGRESS_BAR_MSG_TIME 3000 // (ms) Amount of time to show the status message
@@ -1702,7 +1702,7 @@
 
 // #define SD_REPRINT_LAST_SELECTED_FILE // On print completion open the LCD Menu and select the same file
 
-// #define AUTO_REPORT_SD_STATUS         // Auto-report media status with 'M27 S<seconds>'
+#define AUTO_REPORT_SD_STATUS         // Auto-report media status with 'M27 S<seconds>'
 
 /**
  * Support for USB thumb drives using an Arduino USB Host Shield or
@@ -2169,8 +2169,8 @@
 #endif
 // #define ADVANCE_K_EXTRA       // Add a second linear advance constant, configurable with M900 L.
 // #define LA_DEBUG              // Print debug information to serial during operation. Disable for production use.
-// #define ALLOW_LOW_EJERK       // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
-// #define EXPERIMENTAL_I2S_LA   // Allow I2S_STEPPER_STREAM to be used with LA. Performance degrades as the LA step rate reaches ~20kHz.
+ #define ALLOW_LOW_EJERK       // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
+ #define EXPERIMENTAL_I2S_LA   // Allow I2S_STEPPER_STREAM to be used with LA. Performance degrades as the LA step rate reaches ~20kHz.
 #endif
 
 // @section leveling
@@ -2451,18 +2451,18 @@
 // The number of linear moves that can be in the planner at once.
 // The value of BLOCK_BUFFER_SIZE must be a power of 2 (e.g., 8, 16, 32)
 #if BOTH(SDSUPPORT, DIRECT_STEPPING)
-#define BLOCK_BUFFER_SIZE 8
+#define BLOCK_BUFFER_SIZE 64
 #elif ENABLED(SDSUPPORT)
-#define BLOCK_BUFFER_SIZE 16
+#define BLOCK_BUFFER_SIZE 64
 #else
-#define BLOCK_BUFFER_SIZE 16
+#define BLOCK_BUFFER_SIZE 64
 #endif
 
 // @section serial
 
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
-#define BUFSIZE 16 // MRiscoC Increase buffer for Octoprint
+#define BUFSIZE 32 // MRiscoC Increase buffer for Octoprint
 
 // Transmission to Host Buffer Size
 // To save 386 bytes of flash (and TX_BUFFER_SIZE+3 bytes of RAM) set to 0.
@@ -2471,13 +2471,13 @@
 // For debug-echo: 128 bytes for the optimal speed.
 // Other output doesn't need to be that speedy.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256]
-#define TX_BUFFER_SIZE 64 // MRiscoC Increase buffer for Octoprint
+#define TX_BUFFER_SIZE 32 // MRiscoC Increase buffer for Octoprint
 
 // Host Receive Buffer Size
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
 // To use flow control, set this buffer size to at least 1024 bytes.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-// #define RX_BUFFER_SIZE 1024
+#define RX_BUFFER_SIZE 2048
 
 #if RX_BUFFER_SIZE >= 1024
 // Enable to have the controller send XON/XOFF control characters to
@@ -3687,7 +3687,7 @@
 /**
  * Auto-report position with M154 S<seconds>
  */
-// #define AUTO_REPORT_POSITION
+ #define AUTO_REPORT_POSITION
 
 /**
  * Include capabilities in M115 output
@@ -3739,11 +3739,11 @@
 // @section reporting
 
 // Extra options for the M114 "Current Position" report
-// #define M114_DETAIL         // Use 'M114` for details to check planner calculations
-// #define M114_REALTIME       // Real current position based on forward kinematics
+ #define M114_DETAIL         // Use 'M114` for details to check planner calculations
+ #define M114_REALTIME       // Real current position based on forward kinematics
 // #define M114_LEGACY         // M114 used to synchronize on every call. Enable if needed.
 
-// #define REPORT_FAN_CHANGE   // Report the new fan speed when changed by M106 (and others)
+ #define REPORT_FAN_CHANGE   // Report the new fan speed when changed by M106 (and others)
 
 // @section gcode
 
@@ -3760,7 +3760,7 @@
 // #define MEATPACK_ON_SERIAL_PORT_1
 // #define MEATPACK_ON_SERIAL_PORT_2
 
-// #define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
+ #define GCODE_CASE_INSENSITIVE  // Accept G-code sent to the firmware in lowercase
 
 // #define REPETIER_GCODE_M360     // Add commands originally from Repetier FW
 
@@ -3934,7 +3934,7 @@
 #if ENABLED(HOST_PROMPT_SUPPORT)
 // #define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
 #endif
-// #define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
+#define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
 // #define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
 #endif
 

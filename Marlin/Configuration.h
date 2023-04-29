@@ -1397,7 +1397,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-// #define S_CURVE_ACCELERATION  // MRiscoC Enabled
+#define S_CURVE_ACCELERATION  // MRiscoC Enabled
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -2096,8 +2096,8 @@
  */
 // #define AUTO_BED_LEVELING_3POINT
 // #define AUTO_BED_LEVELING_LINEAR
-// #define AUTO_BED_LEVELING_BILINEAR  // MRiscoC BLTouch auto level  // Disabled for UBL
-#define AUTO_BED_LEVELING_UBL // MRiscoC UBL
+ #define AUTO_BED_LEVELING_BILINEAR  // MRiscoC BLTouch auto level  // Disabled for UBL
+//#define AUTO_BED_LEVELING_UBL // MRiscoC UBL
 // #define MESH_BED_LEVELING
 
 /**
@@ -2280,45 +2280,45 @@
 #endif
 
 // // Add a menu item to move between bed corners for manual bed adjustment
-#define LCD_BED_TRAMMING // ProUI has a bed tramming menu
+// #define LCD_BED_TRAMMING // ProUI has a bed tramming menu
 
-#if ENABLED(LCD_BED_TRAMMING)
-#define BED_TRAMMING_INSET_LFRB \
-  {                             \
-    30, 30, 30, 30              \
-  }                             // (mm) Left, Front, Right, Back insets
-#define BED_TRAMMING_HEIGHT 0.0 // (mm) Z height of nozzle at leveling points
-#define BED_TRAMMING_Z_HOP 5.0  // (mm) Z height of nozzle between leveling points
-// #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
-#define BED_TRAMMING_USE_PROBE // Use a probe if it is available
-#if ENABLED(BED_TRAMMING_USE_PROBE)
-#define BED_TRAMMING_PROBE_TOLERANCE 0.05 // (mm)  // ProUI bed tramming wizard tolerance
-#define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
-// #define BED_TRAMMING_AUDIO_FEEDBACK
-#endif
+// #if ENABLED(LCD_BED_TRAMMING)
+// #define BED_TRAMMING_INSET_LFRB \
+//   {                             \
+//     30, 30, 30, 30              \
+//   }                             // (mm) Left, Front, Right, Back insets
+// #define BED_TRAMMING_HEIGHT 0.0 // (mm) Z height of nozzle at leveling points
+// #define BED_TRAMMING_Z_HOP 5.0  // (mm) Z height of nozzle between leveling points
+// // #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
+// #define BED_TRAMMING_USE_PROBE // Use a probe if it is available
+// #if ENABLED(BED_TRAMMING_USE_PROBE)
+// #define BED_TRAMMING_PROBE_TOLERANCE 0.05 // (mm)  // ProUI bed tramming wizard tolerance
+// #define BED_TRAMMING_VERIFY_RAISED        // After adjustment triggers the probe, re-probe to verify
+// // #define BED_TRAMMING_AUDIO_FEEDBACK
+// #endif
 
-/**
- * Corner Leveling Order
- *
- * Set 2 or 4 points. When 2 points are given, the 3rd is the center of the opposite edge.
- *
- *  LF  Left-Front    RF  Right-Front
- *  LB  Left-Back     RB  Right-Back
- *
- * Examples:
- *
- *      Default        {LF,RB,LB,RF}         {LF,RF}           {LB,LF}
- *  LB --------- RB   LB --------- RB    LB --------- RB   LB --------- RB
- *  |  4       3  |   | 3         2 |    |     <3>     |   | 1           |
- *  |             |   |             |    |             |   |          <3>|
- *  |  1       2  |   | 1         4 |    | 1         2 |   | 2           |
- *  LF --------- RF   LF --------- RF    LF --------- RF   LF --------- RF
- */
-#define BED_TRAMMING_LEVELING_ORDER \
-  {                                 \
-    LF, RF, RB, LB                  \
-  }
-#endif
+// /**
+//  * Corner Leveling Order
+//  *
+//  * Set 2 or 4 points. When 2 points are given, the 3rd is the center of the opposite edge.
+//  *
+//  *  LF  Left-Front    RF  Right-Front
+//  *  LB  Left-Back     RB  Right-Back
+//  *
+//  * Examples:
+//  *
+//  *      Default        {LF,RB,LB,RF}         {LF,RF}           {LB,LF}
+//  *  LB --------- RB   LB --------- RB    LB --------- RB   LB --------- RB
+//  *  |  4       3  |   | 3         2 |    |     <3>     |   | 1           |
+//  *  |             |   |             |    |             |   |          <3>|
+//  *  |  1       2  |   | 1         4 |    | 1         2 |   | 2           |
+//  *  LF --------- RF   LF --------- RF    LF --------- RF   LF --------- RF
+//  */
+// #define BED_TRAMMING_LEVELING_ORDER \
+//   {                                 \
+//     LF, RF, RB, LB                  \
+//   }
+// #endif
 
 /**
  * Commands to execute at the end of G29 probing.
@@ -2835,7 +2835,7 @@
 // If you have a speaker that can produce tones, enable it here.
 // By default Marlin assumes you have a buzzer with a fixed frequency.
 //
-// #define SPEAKER
+#define SPEAKER
 
 //
 // The duration and frequency for the UI feedback sound.
