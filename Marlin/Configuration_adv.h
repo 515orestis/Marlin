@@ -971,6 +971,7 @@
  */
 #define BLTOUCH_HS_MODE true
 
+#define BLTOUCH_HS_EXTRA_CLEARANCE 1
 // Safety: Enable voltage mode settings in the LCD menu.
 // #define BLTOUCH_LCD_VOLTAGE_MENU
 

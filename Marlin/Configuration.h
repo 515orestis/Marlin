@@ -1153,9 +1153,9 @@
 // Specify here all the endstop connectors that are connected to any endstop or probe.
 // Almost all printers will be using one per axis. Probes will use one or more of the
 // extra connectors. Leave undefined any used for non-endstop and non-probe purposes.
-#define USE_XMIN_PLUG
-#define USE_YMIN_PLUG
-#define USE_ZMIN_PLUG
+// #define USE_XMIN_PLUG
+// #define USE_YMIN_PLUG
+// #define USE_ZMIN_PLUG
 // #define USE_IMIN_PLUG
 // #define USE_JMIN_PLUG
 // #define USE_KMIN_PLUG
@@ -1241,7 +1241,7 @@
 #define U_MAX_ENDSTOP_HIT_STATE false       // Set to true to invert the logic of the endstop.
 #define V_MAX_ENDSTOP_HIT_STATE false       // Set to true to invert the logic of the endstop.
 #define W_MAX_ENDSTOP_HIT_STATE false       // Set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_HIT_STATE false // Set to true to invert the logic of the probe.
+#define Z_MIN_PROBE_ENDSTOP_HIT_STATE HIGH  // Set to true to invert the logic of the probe.
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
@@ -2279,7 +2279,7 @@
 // #define MESH_EDIT_MENU        // Add a menu to edit mesh points
 #endif
 
-// Add a menu item to move between bed corners for manual bed adjustment
+// // Add a menu item to move between bed corners for manual bed adjustment
 #define LCD_BED_TRAMMING // ProUI has a bed tramming menu
 
 #if ENABLED(LCD_BED_TRAMMING)
